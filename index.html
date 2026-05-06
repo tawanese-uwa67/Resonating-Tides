@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resonating Tides | WuWa OC Archive</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="bg-container">
+        <div class="bg-image"></div>
+        <div class="bg-overlay"></div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rainy-Day-Implicit-Masters.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="sfx-click" src="https://www.fesliyanstudios.com/play-mp3/638"></audio>
+
+    <main id="app">
+        <section id="home-page" class="view active">
+            <div class="hero-content">
+                <h1 class="logo-text">RESONATING TIDES</h1>
+                <p class="subtitle">Wuthering Waves OC Archive</p>
+                <div class="nav-buttons">
+                    <button onclick="openAdmin()" class="btn-glowing">ADMIN</button>
+                    <button onclick="navigate('create-page')" class="btn-glowing">CREATE</button>
+                    <button onclick="navigate('archive-page')" class="btn-glowing">OCS</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="create-page" class="view">
+            <div class="glass-panel">
+                <button class="back-btn" onclick="navigate('home-page')">← BACK</button>
+                <h2>RESONATOR REGISTRATION</h2>
+                <form id="oc-form">
+                    <div class="form-grid">
+                        <div class="form-group"><label>OC Image URL</label><input type="text" id="oc-image" required></div>
+                        <div class="form-group"><label>Name</label><input type="text" id="oc-name" required></div>
+                        <div class="form-group">
+                            <label>Region</label>
+                            <select id="oc-region">
+                                <option value="Huanglong">Huanglong</option>
+                                <option value="Lahai Roi">Lahai Roi</option>
+                                <option value="Ragunna">Ragunna</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Weapon</label>
+                            <select id="oc-weapon">
+                                <option value="Sword">Sword</option>
+                                <option value="Broadblade">Broadblade</option>
+                                <option value="Rectifier">Rectifier</option>
+                                <option value="Polearm">Polearm</option>
+                                <option value="Gauntlets">Gauntlets</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="stats-section">
+                        <h3>Attribute Ranks (A-E)</h3>
+                        <div class="stats-grid" id="stats-inputs"></div>
+                    </div>
+                    <textarea id="oc-backstory" placeholder="Personality & Backstory..."></textarea>
+                    <button type="submit" class="btn-submit">INITIALIZE RESONANCE</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="archive-page" class="view">
+            <div class="archive-header">
+                <button class="back-btn" onclick="navigate('home-page')">← BACK</button>
+                <h2>DATA BANK</h2>
+                <div class="filter-tabs">
+                    <button class="tab active" onclick="filterArchive('All')">ALL</button>
+                    <button class="tab" onclick="filterArchive('Huanglong')">HUANGLONG</button>
+                    <button class="tab" onclick="filterArchive('Lahai Roi')">LAHAI ROI</button>
+                    <button class="tab" onclick="filterArchive('Ragunna')">RAGUNNA</button>
+                </div>
+            </div>
+            <div id="oc-gallery" class="gallery"></div>
+        </section>
+
+        <div id="profile-modal" class="modal">
+            <div class="modal-content" id="export-area">
+                <div class="card-layout">
+                    <div class="card-image-box"><img id="card-img" src=""><div class="card-labels" id="card-labels"></div></div>
+                    <div class="card-info">
+                        <h2 id="card-name"></h2>
+                        <p id="card-meta"></p>
+                        <div class="card-stats" id="card-stats-display"></div>
+                        <div class="card-story"><h4>ARCHIVE RECORD</h4><p id="card-story-text"></p></div>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn-action" onclick="saveAsImage()">SAVE AS PNG</button>
+                    <button class="btn-action" onclick="closeModal()">CLOSE</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
